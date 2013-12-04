@@ -20,8 +20,8 @@ fsfreeze.fsfreeze(:filesystem => 'ALL', :unfreeze_after => options[:unfreeze_aft
   puts "Frozen: #{resp[:senderid]}"
   puts "Launching backup for #{resp[:senderid]}"
   puts "Unfreezing #{resp[:senderid]}"
-  fsunfreeze = rpcclient('fsfreeze')
-  fsunfreeze.identity_filter resp[:senderid]
-  fsunfreeze.fsunfreeze(:filesystem => 'ALL')
+  fsfreeze.reset
+  fsfreeze.identity_filter resp[:senderid]
+  fsfreeze.fsunfreeze(:filesystem => 'ALL')
 end
 
